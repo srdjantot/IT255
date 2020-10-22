@@ -1,0 +1,9 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  border-radius: 1rem;
+  border: 1px solid #fafafa;
+  background-color: #fafafa;
+  padding: 2rem;
+  margin: 2rem 0 2rem;
+}

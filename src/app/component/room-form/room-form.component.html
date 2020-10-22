@@ -1,0 +1,20 @@
+<mat-form-field appearance="fill">
+  <mat-label>Ime hotela</mat-label>
+  <input #txtHotel [(ngModel)]="hotel" matInput autofocus>
+</mat-form-field>
+<br>
+<mat-form-field appearance="fill">
+  <mat-label>Opis sobe</mat-label>
+  <textarea [(ngModel)]="description" matInput></textarea>
+</mat-form-field>
+<br>
+<mat-form-field appearance="fill">
+  <mat-label>Cena</mat-label>
+  <input [(ngModel)]="price" matInput type="number">
+</mat-form-field>
+<br>
+<mat-slider [(ngModel)]="stars" [max]="5" [min]="1" [step]="1" [thumbLabel]="true" [tickInterval]="1"></mat-slider>
+<br>
+<button (click)="addRoom()" color="primary" mat-raised-button>Dodaj sobu</button>
+<br>
+<button (click)="shuffleRooms()" mat-raised-button>Promešaj sobe</button>
