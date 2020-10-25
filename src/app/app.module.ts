@@ -1,41 +1,48 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { AppComponent } from './app.component';
-import { RoomFormComponent } from './component/room-form/room-form.component';
-import { RoomListComponent } from './component/room-list/room-list.component';
-import { RoomItemComponent } from './component/room-item/room-item.component';
+import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ReactiveFormsModule } from '@angular/forms';
+
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatCardModule } from '@angular/material/card';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { MatButtonModule } from '@angular/material/button';
 import { MatSliderModule } from '@angular/material/slider';
-import { FormsModule } from '@angular/forms';
-import { MatCardModule } from '@angular/material/card';
-import { PricePipe } from './pipe/price.pipe';
+import { MatDialogModule } from '@angular/material/dialog';
+
+import { AppComponent } from './app.component';
+import { RoomFormDialog } from './dialogs/room-form/room-form.dialog';
+import { RoomListComponent } from './components/room-list/room-list.component';
+import { RoomItemComponent } from './components/room-item/room-item.component';
+import { RoomFilterComponent } from './components/room-filter/room-filter.component';
+import { PricePipe } from './pipes/price.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
-    RoomFormComponent,
+    RoomFormDialog,
     RoomListComponent,
     RoomItemComponent,
+    RoomFilterComponent,
     PricePipe
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    ReactiveFormsModule,
     MatToolbarModule,
+    MatCardModule,
+    MatIconModule,
+    MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
-    MatButtonModule,
     MatSliderModule,
-    FormsModule,
-    MatCardModule
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule {
-}
+export class AppModule { }

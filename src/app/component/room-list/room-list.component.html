@@ -1,7 +1,0 @@
-<h1>Lista soba</h1>
-<mat-form-field appearance="fill">
-    <mat-label>Maksimalna cena</mat-label>
-    <input type="number" matInput [(ngModel)]="filterValue">
-</mat-form-field>
-<button mat-raised-button (click)="toggleFilter()">{{filter ? 'Isključi' : 'Primeni'}} filter</button>
-<app-room-item *ngFor="let room of filter ? (repository.get() | price:filterValue) : repository.get()" [room]="room"></app-room-item>

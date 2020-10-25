@@ -10,13 +10,13 @@
 </head>
 
 <body>
-  <mat-toolbar color="primary">
+  <mat-toolbar color="primary" class="mat-elevation-z6">
     <span>{{title}}</span>
   </mat-toolbar>
-  <div class="container">
-    <app-room-form></app-room-form>
-    <app-room-list></app-room-list>
-  </div>
+  <met-room-list></met-room-list>
+  <button mat-fab color="primary" (click)="openAddRoomDialog()">
+    <mat-icon>add</mat-icon>
+  </button>
 </body>
 
 </html>
