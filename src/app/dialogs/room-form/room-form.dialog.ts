@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { RoomFormData } from 'src/app/interfaces/room-form-data';
 import { Room } from 'src/app/models/room.model';
+import { filter, map } from 'rxjs/operators';
 
 @Component({
   selector: 'met-room-form',
@@ -28,6 +29,24 @@ export class RoomFormDialog implements OnInit {
       price: [this.room.price, Validators.min(1)],
       stars: [this.room.stars, [Validators.min(1), Validators.max(5)]]
     });
+
+    this.roomForm.controls.hotel.valueChanges.pipe(
+      filter((hotel: string) => this.filterCondition(hotel)),
+      map(hotel => this.messageBuilder("Hotel", hotel))
+    ).subscribe(message => console.log(message));
+
+    this.roomForm.controls.description.valueChanges.pipe(
+      filter((description: string) => this.filterCondition(description)),
+      map(description => this.messageBuilder("Opis", description))
+    ).subscribe(message => console.log(message));
+  }
+
+  private filterCondition(value: string): boolean {
+    return !value || value.length < 6;
+  }
+
+  private messageBuilder(field: string, value: string): string {
+    return `Vrednost polja ${field} je kraća od 6 znakova: ${value}`
   }
 
   addRoom(): void {
