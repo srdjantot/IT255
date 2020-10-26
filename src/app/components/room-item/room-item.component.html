@@ -9,7 +9,8 @@
         <mat-icon *ngFor="let i of [].constructor(room.stars)">star</mat-icon>
     </mat-card-content>
     <mat-card-actions>
-        <button mat-raised-button color="primary">Rezerviši za {{room.price | currency:'EUR'}}</button>
+        <button mat-raised-button color="primary" (click)="onReserve()">Rezerviši za
+            {{room.price | currency:'EUR'}}</button>
         <button mat-raised-button (click)="onEdit()">
             <mat-icon>edit</mat-icon>
         </button>

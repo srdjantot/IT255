@@ -3,5 +3,5 @@
 </div>
 <div class="rooms">
     <met-room-item *ngFor="let room of repository.rooms | price:maxPrice" [room]="room" (edit)="onEdit($event)"
-        (delete)="onDelete($event)"></met-room-item>
+        (delete)="onDelete($event)" (reserve)="onReserve($event)"></met-room-item>
 </div>

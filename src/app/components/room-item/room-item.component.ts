@@ -10,6 +10,7 @@ export class RoomItemComponent implements OnInit {
   @Input() room: Room;
   @Output() edit = new EventEmitter<Room>();
   @Output() delete = new EventEmitter<Room>();
+  @Output() reserve = new EventEmitter<Room>();
 
   constructor() { }
 
@@ -22,5 +23,9 @@ export class RoomItemComponent implements OnInit {
 
   onDelete(): void {
     this.delete.emit(this.room);
+  }
+
+  onReserve(): void {
+    this.reserve.emit(this.room);
   }
 }
