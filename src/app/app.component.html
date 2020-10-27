@@ -1,22 +1,17 @@
-<!doctype html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
-    name="viewport">
-  <meta content="ie=edge" http-equiv="X-UA-Compatible">
-  <title>{{title}}</title>
-</head>
-
-<body>
-  <mat-toolbar color="primary" class="mat-elevation-z6">
-    <span>{{title}}</span>
-  </mat-toolbar>
-  <met-room-list></met-room-list>
-  <button mat-fab color="primary" (click)="openAddRoomDialog()">
-    <mat-icon>add</mat-icon>
-  </button>
-</body>
-
-</html>
+<div class="container mt-4 mb-4">
+  <div class="row mb-5 justify-content-betwee align-items-end">
+    <div class="col-md-6">
+      <yt-add-video (videoToAdd)="addVideo($event)"></yt-add-video>
+    </div>
+    <div class="col-md-4 mb-5">
+      <h3>Search</h3>
+      <input [(ngModel)]="searchText" placeholder="search text goes here">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4" *ngFor="let video of videos | filter : searchText">
+      <yt-video-box (videoToDelete)="deleteVideo($event)" [video]="video">
+      </yt-video-box>
+    </div>
+  </div>
+</div>

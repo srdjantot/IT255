@@ -1,29 +1,20 @@
 import { Component } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { RoomFormDialog } from './dialogs/room-form/room-form.dialog';
-import { Room } from './models/room.model';
-import { RoomRepositoryService } from './services/room-repository.service';
+import { Video } from './models/video.model';
 
 @Component({
-  selector: 'met-root',
+  selector: 'yt-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Met hotels';
+  videos: Video[] = [];
+  searchText: string;
 
-  constructor(private dialog: MatDialog, private roomRepository: RoomRepositoryService) { }
+  addVideo(video: Video): void {
+    this.videos.push(video);
+  }
 
-  openAddRoomDialog(): void {
-    this.dialog.open(RoomFormDialog, {
-      data: {
-        new: true,
-        room: new Room('', '', 0, 1)
-      }
-    }).afterClosed().subscribe(room => {
-      if (room) {
-        this.roomRepository.add(room);
-      }
-    });
+  deleteVideo(video: Video): void {
+    this.videos = this.videos.filter(item => item !== video);
   }
 }
