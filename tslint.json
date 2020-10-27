@@ -139,13 +139,13 @@
     "directive-selector": [
       true,
       "attribute",
-      "yt",
+      "met",
       "camelCase"
     ],
     "component-selector": [
       true,
       "element",
-      "yt",
+      "met",
       "kebab-case"
     ]
   }

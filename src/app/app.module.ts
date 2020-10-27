@@ -1,30 +1,30 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
 
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FilterPipe } from './pipes/filter.pipe';
-import { VideoBoxComponent } from './components/video-box/video-box.component';
-import { AddVideoComponent } from './components/add-video/add-video.component';
-import { YT_SECRET_PROVIDERS } from './secrets/youtube.secret';
+import { NavigationBarComponent } from './components/navigation-bar/navigation-bar.component';
+import { HomePage } from './pages/home/home.page';
+import { AboutPage } from './pages/about/about.page';
+import { BlogPage } from './pages/blog/blog.page';
+import { BlogEntryPage } from './pages/blog-entry/blog-entry.page';
+import { NotFoundPage } from './pages/not-found/not-found.page';
 
 @NgModule({
   declarations: [
     AppComponent,
-    FilterPipe,
-    VideoBoxComponent,
-    AddVideoComponent
+    NavigationBarComponent,
+    HomePage,
+    AboutPage,
+    BlogPage,
+    BlogEntryPage,
+    NotFoundPage
   ],
   imports: [
     BrowserModule,
-    FormsModule,
-    ReactiveFormsModule,
-    HttpClientModule
+    AppRoutingModule
   ],
-  providers: [
-    YT_SECRET_PROVIDERS
-  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

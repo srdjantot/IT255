@@ -3,10 +3,11 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "IT255-DZ09": {
+    "IT255-DZ10": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
+          "style": "scss",
           "skipTests": true
         },
         "@schematics/angular:class": {
@@ -33,12 +34,12 @@
       },
       "root": "",
       "sourceRoot": "src",
-      "prefix": "yt",
+      "prefix": "met",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/IT255-DZ09",
+            "outputPath": "dist/IT255-DZ10",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -50,7 +51,7 @@
             ],
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "src/styles.css"
+              "src/styles.scss"
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.min.js",
@@ -92,18 +93,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "IT255-DZ09:build"
+            "browserTarget": "IT255-DZ10:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "IT255-DZ09:build:production"
+              "browserTarget": "IT255-DZ10:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "IT255-DZ09:build"
+            "browserTarget": "IT255-DZ10:build"
           }
         },
         "test": {
@@ -118,7 +119,7 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.scss"
             ],
             "scripts": []
           }
@@ -140,15 +141,16 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "IT255-DZ09:serve"
+            "devServerTarget": "IT255-DZ10:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "IT255-DZ09:serve:production"
+              "devServerTarget": "IT255-DZ10:serve:production"
             }
           }
         }
       }
-    }},
-  "defaultProject": "IT255-DZ09"
+    }
+  },
+  "defaultProject": "IT255-DZ10"
 }

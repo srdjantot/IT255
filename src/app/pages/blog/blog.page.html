@@ -1,0 +1,19 @@
+<div class="container">
+    <div class="jumbotron">
+        <h1 class="display-4">Ovde možete naći sve novosti vezane za naš rad!</h1>
+        <hr class="my-4">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat deserunt atque magnam repellat velit quaerat
+            deleniti voluptas tempora explicabo quis non laboriosam voluptate minus sed, similique earum, reiciendis,
+            porro eveniet?</p>
+    </div>
+
+    <ul class="list-group">
+        <li class="list-group-item" *ngFor="let blog of blogService.blogs">
+            <h5>
+                <a [routerLink]="['/blog', blog.id]">{{blog.title}}</a>
+            </h5>
+            <p>{{blog.content | slice:0:100}}...</p>
+            <small>{{blog.date | date}} - {{blog.author}}</small>
+        </li>
+    </ul>
+</div>
