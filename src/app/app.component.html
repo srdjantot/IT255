@@ -1,22 +1,8 @@
-<!doctype html>
-<html lang="en">
+<form #countForm="ngForm">
+  <label for="count">Unesite broj ponavljanja</label>
+  <input type="number" id="count" name="count" ngModel>
+</form>
 
-<head>
-  <meta charset="UTF-8">
-  <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
-    name="viewport">
-  <meta content="ie=edge" http-equiv="X-UA-Compatible">
-  <title>{{title}}</title>
-</head>
-
-<body>
-  <mat-toolbar color="primary" class="mat-elevation-z6">
-    <span>{{title}}</span>
-  </mat-toolbar>
-  <met-room-list></met-room-list>
-  <button mat-fab color="primary" (click)="openAddRoomDialog()">
-    <mat-icon>add</mat-icon>
-  </button>
-</body>
-
-</html>
+<div *metMultiply="countForm.value.count" class="item">
+  Ovaj element je ponovljen korišćenjem <em>metMultiply</em> direktive!
+</div>
