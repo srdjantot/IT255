@@ -18,6 +18,8 @@ import { RoomListComponent } from './components/room-list/room-list.component';
 import { ReservationFormDialog } from './dialogs/reservation-form/reservation-form.dialog';
 import { RoomFormDialog } from './dialogs/room-form/room-form.dialog';
 import { PricePipe } from './pipes/price.pipe';
+import { StoreModule } from '@ngrx/store';
+import { reducer } from './store/room.reducer';
 
 @NgModule({
   declarations: [
@@ -42,7 +44,8 @@ import { PricePipe } from './pipes/price.pipe';
     MatInputModule,
     MatSliderModule,
     MatDialogModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    StoreModule.forRoot({ rooms: reducer})
   ],
   providers: [],
   bootstrap: [AppComponent]

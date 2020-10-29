@@ -1,44 +1,40 @@
 import { Injectable } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { map } from 'rxjs/operators';
 import { Hotel } from '../models/hotel.model';
 import { Room } from '../models/room.model';
+import { addHotel, addRoom, deleteRoom, editRoom } from '../store/room.actions';
+import { State } from '../store/room.reducer';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RoomService {
-  hotels: Hotel[] = [
-    new Hotel('Hotel Star'),
-    new Hotel('Hotel Palas'),
-  ];
+  hotels: Hotel[];
 
-  rooms: Room[] = [
-    new Room(this.hotels[0], "Jednokrevetna soba s pogledom na more", 120, 4),
-    new Room(this.hotels[0], "Dvokrevetna soba s pogledom na more", 180, 5),
-    new Room(this.hotels[1], "Jednokrevetna soba\nPolupansion ", 140, 2),
-    new Room(this.hotels[1], "Jednokrevetna soba\nDoručak", 90, 3),
-  ];
-
-  constructor() { }
+  constructor(private store: Store<{ rooms: State }>) {
+    this.store.select(state => state.rooms.hotels).subscribe(hotels => this.hotels = hotels)
+  }
 
   getOrAddHotel(name: string): Hotel {
     let hotel = this.hotels.find(item => item.name === name);
     if (!hotel) {
       hotel = new Hotel(name);
-      this.hotels = this.hotels.concat(hotel);
+      this.store.dispatch(addHotel({ hotel: hotel }));
     }
     return hotel;
   }
 
   addRoom(room: Room): void {
-    this.rooms = this.rooms.concat(room);
+    this.store.dispatch(addRoom({ room: room }));
   }
 
-  changeRoom(): void {
-    this.rooms = this.rooms.concat();
+  changeRoom(original: Room, changed: Room): void {
+    this.store.dispatch(editRoom({ original: original, changed: changed }));
   }
 
-  removeRoom(room: Room): void {
-    this.rooms = this.rooms.filter(item => item !== room);
+  deleteRoom(room: Room): void {
+    this.store.dispatch(deleteRoom({ room: room }));
   }
 
   getRoomPrice(room: Room, numberOfNights: number): number {

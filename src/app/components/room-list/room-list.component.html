@@ -2,6 +2,6 @@
     <met-room-filter (filterChange)="onFilterChange($event)"></met-room-filter>
 </div>
 <div class="rooms">
-    <met-room-item *ngFor="let room of roomService.rooms | price:maxPrice" [room]="room" (edit)="onEdit($event)"
+    <met-room-item *ngFor="let room of rooms$ | async | price:maxPrice" [room]="room" (edit)="onEdit($event)"
         (delete)="onDelete($event)" (reserve)="onReserve($event)"></met-room-item>
 </div>
