@@ -1,8 +1,0 @@
-<form #countForm="ngForm">
-  <label for="count">Unesite broj ponavljanja</label>
-  <input type="number" id="count" name="count" ngModel>
-</form>
-
-<div *metMultiply="countForm.value.count" class="item">
-  Ovaj element je ponovljen korišćenjem <em>metMultiply</em> direktive!
-</div>
